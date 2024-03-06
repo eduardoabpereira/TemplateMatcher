@@ -1,7 +1,7 @@
-import * as cv from "opencv4nodejs-prebuilt";
-import {MatchResult, Region} from "@nut-tree/nut-js";
+import * as cv from "@edumolki/opencv4nodejs";
+import { MatchResult, Region } from "@nut-tree/nut-js";
 
-export async function matchImages(haystack: cv.Mat, needle: cv.Mat): Promise<MatchResult> {
+export async function matchImages(haystack: cv.Mat, needle: cv.Mat): Promise<MatchResult<Region>> {
     const match = await haystack.matchTemplateAsync(
         needle,
         cv.TM_SQDIFF_NORMED,

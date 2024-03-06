@@ -1,5 +1,5 @@
-import * as cv from "opencv4nodejs-prebuilt";
-import {Image, ImageFinderInterface, MatchRequest, MatchResult} from "@nut-tree/nut-js";
+import * as cv from "@edumolki/opencv4nodejs";
+import {Image, ImageFinderInterface, MatchRequest, MatchResult, Region} from "@nut-tree/nut-js";
 import {matchImages} from "./match-image.function";
 import {scaleImage} from "./scale-image.function";
 import {scaleLocation} from "./scale-location.function";
@@ -29,7 +29,7 @@ export default class TemplateMatchingFinder implements ImageFinderInterface {
     constructor() {
     }
 
-    public async findMatches<PROVIDER_DATA_TYPE>(matchRequest: MatchRequest<Image, PROVIDER_DATA_TYPE>): Promise<MatchResult[]> {
+    public async findMatches<PROVIDER_DATA_TYPE>(matchRequest: MatchRequest<Image, PROVIDER_DATA_TYPE>): Promise<MatchResult<Region>[]> {
         const needle = await loadNeedle(matchRequest.needle);
         if (!needle || needle.empty) {
             throw new Error(
@@ -80,13 +80,13 @@ export default class TemplateMatchingFinder implements ImageFinderInterface {
         return potentialMatches;
     }
 
-    public async findMatch<PROVIDER_DATA_TYPE>(matchRequest: MatchRequest<Image, PROVIDER_DATA_TYPE>): Promise<MatchResult> {
+    public async findMatch<PROVIDER_DATA_TYPE>(matchRequest: MatchRequest<Image, PROVIDER_DATA_TYPE>): Promise<MatchResult<Region>> {
         const matches = await this.findMatches(matchRequest);
         return matches[0];
     }
 
     private async searchMultipleScales(needle: cv.Mat, haystack: cv.Mat) {
-        const results: MatchResult[] = [];
+        const results: MatchResult<Region>[] = [];
 
         for (const currentScale of this.scaleSteps) {
             const scaledHaystack = await scaleImage(haystack, currentScale);

@@ -1,21 +1,19 @@
 {
-  "name": "@nut-tree/template-matcher",
-  "version": "2.0.1",
+  "name": "@edumolki/template-matcher",
+  "version": "2.0.22",
   "main": "dist/index",
   "typings": "dist/index",
   "description": "Locate images on your screen using template matching in nut.js",
   "author": {
-    "name": "Simon Hofmann",
-    "email": "kontakt@s1h.org",
-    "url": "https://s1h.org"
+    "name": "Eduardo Pereira",
+    "email": "edu.eabp@gmail.com"
   },
-  "homepage": "https://nutjs.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nut-tree/TemplateMatcher.git"
+    "url": "https://github.com/eduardoabpereira/TemplateMatcher.git"
   },
   "bugs": {
-    "url": "https://github.com/nut-tree/TemplateMatcher/issues"
+    "url": "https://github.com/eduardoabpereira/TemplateMatcher/issues"
   },
   "os": [
     "linux",
@@ -26,8 +24,7 @@
     "x64"
   ],
   "engines": {
-    "node": "12.x || 14.x || 15.x || 16.x",
-    "electron": "7.x || 9.x || 10.x || 11.x || 12.x || 13.x"
+    "node": ">=16"
   },
   "keywords": [
     "native",
@@ -44,22 +41,30 @@
     "compile": "npm run clean && tsc -p .",
     "test": "jest --runInBand",
     "publish-next": "npm publish --tag next",
-    "prepublishOnly": "npm run compile"
+    "prepublishOnly": "npm run compile",
+    "electron-rebuild": "build-opencv --electron --version 4.6.0 build"
   },
   "dependencies": {
-    "opencv4nodejs-prebuilt": "5.3.3"
+    "@edumolki/opencv4nodejs": "^1.0.7"
   },
   "devDependencies": {
-    "@nut-tree/nut-js": "3.0.0",
+    "@nut-tree/nut-js": "^3.1.2",
     "@types/jest": "29.2.6",
-    "@types/node": "18.11.18",
-    "jest": "29.3.1",
-    "rimraf": "3.0.2",
-    "sneer": "1.0.1",
-    "ts-jest": "29.0.5",
-    "typescript": "4.8.4"
+    "@types/node": "^18.19.4",
+    "jest": "^29.3.1",
+    "rimraf": "^3.0.2",
+    "sneer": "^1.0.1",
+    "ts-jest": "^29.0.5",
+    "typescript": "^4.8.4"
   },
   "peerDependencies": {
     "@nut-tree/nut-js": ">=3.0.0"
+  },
+  "opencv4nodejs": {
+    "autoBuildWithoutContrib": 1,
+    "autoBuildOpencvVersion": "4.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

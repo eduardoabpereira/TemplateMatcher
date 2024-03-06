@@ -1,4 +1,4 @@
-import * as cv from "opencv4nodejs-prebuilt";
+import * as cv from "@edumolki/opencv4nodejs";
 import {Image, ImageReader} from "@nut-tree/nut-js";
 
 export default class implements ImageReader {
