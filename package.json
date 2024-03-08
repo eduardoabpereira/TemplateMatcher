@@ -1,6 +1,6 @@
 {
   "name": "@edumolki/template-matcher",
-  "version": "2.0.22",
+  "version": "2.0.25",
   "main": "dist/index",
   "typings": "dist/index",
   "description": "Locate images on your screen using template matching in nut.js",
@@ -45,7 +45,7 @@
     "electron-rebuild": "build-opencv --electron --version 4.6.0 build"
   },
   "dependencies": {
-    "@edumolki/opencv4nodejs": "^1.0.7"
+    "@edumolki/opencv4nodejs": "^1.0.10"
   },
   "devDependencies": {
     "@nut-tree/nut-js": "^3.1.2",
@@ -61,8 +61,10 @@
     "@nut-tree/nut-js": ">=3.0.0"
   },
   "opencv4nodejs": {
-    "autoBuildWithoutContrib": 1,
-    "autoBuildOpencvVersion": "4.6.0"
+    "disableAutoBuild": 1,
+    "opencvIncludeDir": "C:\/Users\/dudu_\/Projects\/opencv4nodejs\/node_modules\/@edumolki\/opencv-build\/dist\/opencv-4.6.0-8b1ea\/build\/include\/",
+    "opencvLibDir": "C:\/Users\/dudu_\/Projects\/opencv4nodejs\/node_modules\/@edumolki\/opencv-build\/dist\/opencv-4.6.0-8b1ea\/build\/lib\/Release",
+    "opencvBinDir": "C:\/Users\/dudu_\/Projects\/opencv4nodejs\/node_modules\/@edumolki\/opencv-build\/dist\/opencv-4.6.0-8b1ea\/build\/bin"
   },
   "publishConfig": {
     "access": "public"
